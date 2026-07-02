@@ -20,6 +20,7 @@ import { Route as AdminGroupsRouteImport } from './routes/admin/groups'
 import { Route as AdminFinanceRouteImport } from './routes/admin/finance'
 import { Route as AdminEventsRouteImport } from './routes/admin/events'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as AdminCommunicationsRouteImport } from './routes/admin/communications'
 import { Route as AdminPeopleIdRouteImport } from './routes/admin/people.$id'
 
 const SelectChurchRoute = SelectChurchRouteImport.update({
@@ -77,6 +78,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/admin/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminCommunicationsRoute = AdminCommunicationsRouteImport.update({
+  id: '/admin/communications',
+  path: '/admin/communications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminPeopleIdRoute = AdminPeopleIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/select-church': typeof SelectChurchRoute
+  '/admin/communications': typeof AdminCommunicationsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/finance': typeof AdminFinanceRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/select-church': typeof SelectChurchRoute
+  '/admin/communications': typeof AdminCommunicationsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/finance': typeof AdminFinanceRoute
@@ -117,6 +125,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/select-church': typeof SelectChurchRoute
+  '/admin/communications': typeof AdminCommunicationsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/finance': typeof AdminFinanceRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/select-church'
+    | '/admin/communications'
     | '/admin/dashboard'
     | '/admin/events'
     | '/admin/finance'
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/select-church'
+    | '/admin/communications'
     | '/admin/dashboard'
     | '/admin/events'
     | '/admin/finance'
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/select-church'
+    | '/admin/communications'
     | '/admin/dashboard'
     | '/admin/events'
     | '/admin/finance'
@@ -176,6 +188,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
   SelectChurchRoute: typeof SelectChurchRoute
+  AdminCommunicationsRoute: typeof AdminCommunicationsRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminEventsRoute: typeof AdminEventsRoute
   AdminFinanceRoute: typeof AdminFinanceRoute
@@ -264,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/communications': {
+      id: '/admin/communications'
+      path: '/admin/communications'
+      fullPath: '/admin/communications'
+      preLoaderRoute: typeof AdminCommunicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/people/$id': {
       id: '/admin/people/$id'
       path: '/$id'
@@ -291,6 +311,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,
   SelectChurchRoute: SelectChurchRoute,
+  AdminCommunicationsRoute: AdminCommunicationsRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminEventsRoute: AdminEventsRoute,
   AdminFinanceRoute: AdminFinanceRoute,
