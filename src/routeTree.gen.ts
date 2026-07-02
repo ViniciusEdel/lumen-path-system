@@ -9,38 +9,316 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SelectChurchRouteImport } from './routes/select-church'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ChurchSitePreviewRouteImport } from './routes/church-site-preview'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MemberDashboardRouteImport } from './routes/member/dashboard'
+import { Route as AdminVisitorsRouteImport } from './routes/admin/visitors'
+import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
+import { Route as AdminSchedulesRouteImport } from './routes/admin/schedules'
+import { Route as AdminReportsRouteImport } from './routes/admin/reports'
+import { Route as AdminPeopleRouteImport } from './routes/admin/people'
+import { Route as AdminPastoralCareRouteImport } from './routes/admin/pastoral-care'
+import { Route as AdminMinistriesRouteImport } from './routes/admin/ministries'
+import { Route as AdminGroupsRouteImport } from './routes/admin/groups'
+import { Route as AdminFinanceRouteImport } from './routes/admin/finance'
+import { Route as AdminEventsRouteImport } from './routes/admin/events'
+import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as AdminCommunicationsRouteImport } from './routes/admin/communications'
+import { Route as AdminChildrenRouteImport } from './routes/admin/children'
+import { Route as AdminPeopleIdRouteImport } from './routes/admin/people.$id'
 
+const SelectChurchRoute = SelectChurchRouteImport.update({
+  id: '/select-church',
+  path: '/select-church',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChurchSitePreviewRoute = ChurchSitePreviewRouteImport.update({
+  id: '/church-site-preview',
+  path: '/church-site-preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MemberDashboardRoute = MemberDashboardRouteImport.update({
+  id: '/member/dashboard',
+  path: '/member/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminVisitorsRoute = AdminVisitorsRouteImport.update({
+  id: '/admin/visitors',
+  path: '/admin/visitors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/admin/settings',
+  path: '/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSchedulesRoute = AdminSchedulesRouteImport.update({
+  id: '/admin/schedules',
+  path: '/admin/schedules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/admin/reports',
+  path: '/admin/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPeopleRoute = AdminPeopleRouteImport.update({
+  id: '/admin/people',
+  path: '/admin/people',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPastoralCareRoute = AdminPastoralCareRouteImport.update({
+  id: '/admin/pastoral-care',
+  path: '/admin/pastoral-care',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMinistriesRoute = AdminMinistriesRouteImport.update({
+  id: '/admin/ministries',
+  path: '/admin/ministries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminGroupsRoute = AdminGroupsRouteImport.update({
+  id: '/admin/groups',
+  path: '/admin/groups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminFinanceRoute = AdminFinanceRouteImport.update({
+  id: '/admin/finance',
+  path: '/admin/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminEventsRoute = AdminEventsRouteImport.update({
+  id: '/admin/events',
+  path: '/admin/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCommunicationsRoute = AdminCommunicationsRouteImport.update({
+  id: '/admin/communications',
+  path: '/admin/communications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminChildrenRoute = AdminChildrenRouteImport.update({
+  id: '/admin/children',
+  path: '/admin/children',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPeopleIdRoute = AdminPeopleIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AdminPeopleRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/church-site-preview': typeof ChurchSitePreviewRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/select-church': typeof SelectChurchRoute
+  '/admin/children': typeof AdminChildrenRoute
+  '/admin/communications': typeof AdminCommunicationsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/finance': typeof AdminFinanceRoute
+  '/admin/groups': typeof AdminGroupsRoute
+  '/admin/ministries': typeof AdminMinistriesRoute
+  '/admin/pastoral-care': typeof AdminPastoralCareRoute
+  '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/schedules': typeof AdminSchedulesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/visitors': typeof AdminVisitorsRoute
+  '/member/dashboard': typeof MemberDashboardRoute
+  '/admin/people/$id': typeof AdminPeopleIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/church-site-preview': typeof ChurchSitePreviewRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/select-church': typeof SelectChurchRoute
+  '/admin/children': typeof AdminChildrenRoute
+  '/admin/communications': typeof AdminCommunicationsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/finance': typeof AdminFinanceRoute
+  '/admin/groups': typeof AdminGroupsRoute
+  '/admin/ministries': typeof AdminMinistriesRoute
+  '/admin/pastoral-care': typeof AdminPastoralCareRoute
+  '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/schedules': typeof AdminSchedulesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/visitors': typeof AdminVisitorsRoute
+  '/member/dashboard': typeof MemberDashboardRoute
+  '/admin/people/$id': typeof AdminPeopleIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/church-site-preview': typeof ChurchSitePreviewRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/select-church': typeof SelectChurchRoute
+  '/admin/children': typeof AdminChildrenRoute
+  '/admin/communications': typeof AdminCommunicationsRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/finance': typeof AdminFinanceRoute
+  '/admin/groups': typeof AdminGroupsRoute
+  '/admin/ministries': typeof AdminMinistriesRoute
+  '/admin/pastoral-care': typeof AdminPastoralCareRoute
+  '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/schedules': typeof AdminSchedulesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/visitors': typeof AdminVisitorsRoute
+  '/member/dashboard': typeof MemberDashboardRoute
+  '/admin/people/$id': typeof AdminPeopleIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/church-site-preview'
+    | '/login'
+    | '/onboarding'
+    | '/select-church'
+    | '/admin/children'
+    | '/admin/communications'
+    | '/admin/dashboard'
+    | '/admin/events'
+    | '/admin/finance'
+    | '/admin/groups'
+    | '/admin/ministries'
+    | '/admin/pastoral-care'
+    | '/admin/people'
+    | '/admin/reports'
+    | '/admin/schedules'
+    | '/admin/settings'
+    | '/admin/visitors'
+    | '/member/dashboard'
+    | '/admin/people/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/church-site-preview'
+    | '/login'
+    | '/onboarding'
+    | '/select-church'
+    | '/admin/children'
+    | '/admin/communications'
+    | '/admin/dashboard'
+    | '/admin/events'
+    | '/admin/finance'
+    | '/admin/groups'
+    | '/admin/ministries'
+    | '/admin/pastoral-care'
+    | '/admin/people'
+    | '/admin/reports'
+    | '/admin/schedules'
+    | '/admin/settings'
+    | '/admin/visitors'
+    | '/member/dashboard'
+    | '/admin/people/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/church-site-preview'
+    | '/login'
+    | '/onboarding'
+    | '/select-church'
+    | '/admin/children'
+    | '/admin/communications'
+    | '/admin/dashboard'
+    | '/admin/events'
+    | '/admin/finance'
+    | '/admin/groups'
+    | '/admin/ministries'
+    | '/admin/pastoral-care'
+    | '/admin/people'
+    | '/admin/reports'
+    | '/admin/schedules'
+    | '/admin/settings'
+    | '/admin/visitors'
+    | '/member/dashboard'
+    | '/admin/people/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChurchSitePreviewRoute: typeof ChurchSitePreviewRoute
+  LoginRoute: typeof LoginRoute
+  OnboardingRoute: typeof OnboardingRoute
+  SelectChurchRoute: typeof SelectChurchRoute
+  AdminChildrenRoute: typeof AdminChildrenRoute
+  AdminCommunicationsRoute: typeof AdminCommunicationsRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminEventsRoute: typeof AdminEventsRoute
+  AdminFinanceRoute: typeof AdminFinanceRoute
+  AdminGroupsRoute: typeof AdminGroupsRoute
+  AdminMinistriesRoute: typeof AdminMinistriesRoute
+  AdminPastoralCareRoute: typeof AdminPastoralCareRoute
+  AdminPeopleRoute: typeof AdminPeopleRouteWithChildren
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminSchedulesRoute: typeof AdminSchedulesRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminVisitorsRoute: typeof AdminVisitorsRoute
+  MemberDashboardRoute: typeof MemberDashboardRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/select-church': {
+      id: '/select-church'
+      path: '/select-church'
+      fullPath: '/select-church'
+      preLoaderRoute: typeof SelectChurchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/church-site-preview': {
+      id: '/church-site-preview'
+      path: '/church-site-preview'
+      fullPath: '/church-site-preview'
+      preLoaderRoute: typeof ChurchSitePreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +326,147 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/member/dashboard': {
+      id: '/member/dashboard'
+      path: '/member/dashboard'
+      fullPath: '/member/dashboard'
+      preLoaderRoute: typeof MemberDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/visitors': {
+      id: '/admin/visitors'
+      path: '/admin/visitors'
+      fullPath: '/admin/visitors'
+      preLoaderRoute: typeof AdminVisitorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/admin/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/schedules': {
+      id: '/admin/schedules'
+      path: '/admin/schedules'
+      fullPath: '/admin/schedules'
+      preLoaderRoute: typeof AdminSchedulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/admin/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/people': {
+      id: '/admin/people'
+      path: '/admin/people'
+      fullPath: '/admin/people'
+      preLoaderRoute: typeof AdminPeopleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/pastoral-care': {
+      id: '/admin/pastoral-care'
+      path: '/admin/pastoral-care'
+      fullPath: '/admin/pastoral-care'
+      preLoaderRoute: typeof AdminPastoralCareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/ministries': {
+      id: '/admin/ministries'
+      path: '/admin/ministries'
+      fullPath: '/admin/ministries'
+      preLoaderRoute: typeof AdminMinistriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/groups': {
+      id: '/admin/groups'
+      path: '/admin/groups'
+      fullPath: '/admin/groups'
+      preLoaderRoute: typeof AdminGroupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/finance': {
+      id: '/admin/finance'
+      path: '/admin/finance'
+      fullPath: '/admin/finance'
+      preLoaderRoute: typeof AdminFinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/events': {
+      id: '/admin/events'
+      path: '/admin/events'
+      fullPath: '/admin/events'
+      preLoaderRoute: typeof AdminEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/communications': {
+      id: '/admin/communications'
+      path: '/admin/communications'
+      fullPath: '/admin/communications'
+      preLoaderRoute: typeof AdminCommunicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/children': {
+      id: '/admin/children'
+      path: '/admin/children'
+      fullPath: '/admin/children'
+      preLoaderRoute: typeof AdminChildrenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/people/$id': {
+      id: '/admin/people/$id'
+      path: '/$id'
+      fullPath: '/admin/people/$id'
+      preLoaderRoute: typeof AdminPeopleIdRouteImport
+      parentRoute: typeof AdminPeopleRoute
+    }
   }
 }
 
+interface AdminPeopleRouteChildren {
+  AdminPeopleIdRoute: typeof AdminPeopleIdRoute
+}
+
+const AdminPeopleRouteChildren: AdminPeopleRouteChildren = {
+  AdminPeopleIdRoute: AdminPeopleIdRoute,
+}
+
+const AdminPeopleRouteWithChildren = AdminPeopleRoute._addFileChildren(
+  AdminPeopleRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChurchSitePreviewRoute: ChurchSitePreviewRoute,
+  LoginRoute: LoginRoute,
+  OnboardingRoute: OnboardingRoute,
+  SelectChurchRoute: SelectChurchRoute,
+  AdminChildrenRoute: AdminChildrenRoute,
+  AdminCommunicationsRoute: AdminCommunicationsRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminEventsRoute: AdminEventsRoute,
+  AdminFinanceRoute: AdminFinanceRoute,
+  AdminGroupsRoute: AdminGroupsRoute,
+  AdminMinistriesRoute: AdminMinistriesRoute,
+  AdminPastoralCareRoute: AdminPastoralCareRoute,
+  AdminPeopleRoute: AdminPeopleRouteWithChildren,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminSchedulesRoute: AdminSchedulesRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminVisitorsRoute: AdminVisitorsRoute,
+  MemberDashboardRoute: MemberDashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
