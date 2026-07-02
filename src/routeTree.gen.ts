@@ -15,6 +15,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminPeopleRouteImport } from './routes/admin/people'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as AdminPeopleIdRouteImport } from './routes/admin/people.$id'
 
 const SelectChurchRoute = SelectChurchRouteImport.update({
   id: '/select-church',
@@ -46,6 +47,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/admin/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPeopleIdRoute = AdminPeopleIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AdminPeopleRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,7 +59,8 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
-  '/admin/people': typeof AdminPeopleRoute
+  '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/people/$id': typeof AdminPeopleIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +68,8 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
-  '/admin/people': typeof AdminPeopleRoute
+  '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/people/$id': typeof AdminPeopleIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,7 +78,8 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
-  '/admin/people': typeof AdminPeopleRoute
+  '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/people/$id': typeof AdminPeopleIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/people'
+    | '/admin/people/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/people'
+    | '/admin/people/$id'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/people'
+    | '/admin/people/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -105,7 +117,7 @@ export interface RootRouteChildren {
   OnboardingRoute: typeof OnboardingRoute
   SelectChurchRoute: typeof SelectChurchRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
-  AdminPeopleRoute: typeof AdminPeopleRoute
+  AdminPeopleRoute: typeof AdminPeopleRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -152,8 +164,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/people/$id': {
+      id: '/admin/people/$id'
+      path: '/$id'
+      fullPath: '/admin/people/$id'
+      preLoaderRoute: typeof AdminPeopleIdRouteImport
+      parentRoute: typeof AdminPeopleRoute
+    }
   }
 }
+
+interface AdminPeopleRouteChildren {
+  AdminPeopleIdRoute: typeof AdminPeopleIdRoute
+}
+
+const AdminPeopleRouteChildren: AdminPeopleRouteChildren = {
+  AdminPeopleIdRoute: AdminPeopleIdRoute,
+}
+
+const AdminPeopleRouteWithChildren = AdminPeopleRoute._addFileChildren(
+  AdminPeopleRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -161,7 +192,7 @@ const rootRouteChildren: RootRouteChildren = {
   OnboardingRoute: OnboardingRoute,
   SelectChurchRoute: SelectChurchRoute,
   AdminDashboardRoute: AdminDashboardRoute,
-  AdminPeopleRoute: AdminPeopleRoute,
+  AdminPeopleRoute: AdminPeopleRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
