@@ -15,6 +15,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminVisitorsRouteImport } from './routes/admin/visitors'
 import { Route as AdminPeopleRouteImport } from './routes/admin/people'
+import { Route as AdminMinistriesRouteImport } from './routes/admin/ministries'
 import { Route as AdminGroupsRouteImport } from './routes/admin/groups'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminPeopleIdRouteImport } from './routes/admin/people.$id'
@@ -49,6 +50,11 @@ const AdminPeopleRoute = AdminPeopleRouteImport.update({
   path: '/admin/people',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminMinistriesRoute = AdminMinistriesRouteImport.update({
+  id: '/admin/ministries',
+  path: '/admin/ministries',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminGroupsRoute = AdminGroupsRouteImport.update({
   id: '/admin/groups',
   path: '/admin/groups',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/groups': typeof AdminGroupsRoute
+  '/admin/ministries': typeof AdminMinistriesRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
   '/admin/visitors': typeof AdminVisitorsRoute
   '/admin/people/$id': typeof AdminPeopleIdRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/groups': typeof AdminGroupsRoute
+  '/admin/ministries': typeof AdminMinistriesRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
   '/admin/visitors': typeof AdminVisitorsRoute
   '/admin/people/$id': typeof AdminPeopleIdRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/groups': typeof AdminGroupsRoute
+  '/admin/ministries': typeof AdminMinistriesRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
   '/admin/visitors': typeof AdminVisitorsRoute
   '/admin/people/$id': typeof AdminPeopleIdRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/groups'
+    | '/admin/ministries'
     | '/admin/people'
     | '/admin/visitors'
     | '/admin/people/$id'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/groups'
+    | '/admin/ministries'
     | '/admin/people'
     | '/admin/visitors'
     | '/admin/people/$id'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/groups'
+    | '/admin/ministries'
     | '/admin/people'
     | '/admin/visitors'
     | '/admin/people/$id'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   SelectChurchRoute: typeof SelectChurchRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminGroupsRoute: typeof AdminGroupsRoute
+  AdminMinistriesRoute: typeof AdminMinistriesRoute
   AdminPeopleRoute: typeof AdminPeopleRouteWithChildren
   AdminVisitorsRoute: typeof AdminVisitorsRoute
 }
@@ -190,6 +203,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPeopleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/ministries': {
+      id: '/admin/ministries'
+      path: '/admin/ministries'
+      fullPath: '/admin/ministries'
+      preLoaderRoute: typeof AdminMinistriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/groups': {
       id: '/admin/groups'
       path: '/admin/groups'
@@ -233,6 +253,7 @@ const rootRouteChildren: RootRouteChildren = {
   SelectChurchRoute: SelectChurchRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminGroupsRoute: AdminGroupsRoute,
+  AdminMinistriesRoute: AdminMinistriesRoute,
   AdminPeopleRoute: AdminPeopleRouteWithChildren,
   AdminVisitorsRoute: AdminVisitorsRoute,
 }
