@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AdminPagePlaceholder } from "@/components/app/Placeholder";
 import { children } from "@/mocks/data";
+const ageOf = (iso: string) => new Date().getFullYear() - new Date(iso).getFullYear();
 import { StatusBadge } from "@/components/app/primitives";
 import { ShieldAlert } from "lucide-react";
 
@@ -17,10 +18,10 @@ function Page() {
           {children.map(c => (
             <tr key={c.id} className="border-t border-white/5">
               <td className="p-4 text-foreground">{c.name}</td>
-              <td className="text-muted-foreground">{c.age}</td>
+              <td className="text-muted-foreground">{ageOf(c.birthDate)}</td>
               <td className="text-muted-foreground">{c.classroom}</td>
-              <td className="text-muted-foreground">{c.guardian}</td>
-              <td>{c.allergies?.length ? <StatusBadge tone="danger">{c.allergies.join(", ")}</StatusBadge> : <span className="text-muted-foreground text-xs">—</span>}</td>
+              <td className="text-muted-foreground">{c.guardians.join(", ")}</td>
+              <td>{c.allergies ? <StatusBadge tone="danger">{c.allergies}</StatusBadge> : <span className="text-muted-foreground text-xs">—</span>}</td>
               <td><StatusBadge tone={c.checkedIn ? "success" : "info"}>{c.checkedIn ? "Check-in" : "aguardando"}</StatusBadge></td>
               <td className="p-4 text-right font-mono text-primary">{c.pickupCode}</td>
             </tr>

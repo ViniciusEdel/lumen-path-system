@@ -20,9 +20,9 @@ function Page() {
         <div className="glass-panel rounded-2xl p-5">
           <div className="mb-3 font-display text-lg text-foreground">Frequência de cultos</div>
           <div className="h-64"><ResponsiveContainer><LineChart data={attendanceSeries}>
-            <CartesianGrid stroke="rgba(255,255,255,0.05)" /><XAxis dataKey="label" stroke="rgba(255,255,255,0.4)" fontSize={11} /><YAxis stroke="rgba(255,255,255,0.4)" fontSize={11} />
+            <CartesianGrid stroke="rgba(255,255,255,0.05)" /><XAxis dataKey="week" stroke="rgba(255,255,255,0.4)" fontSize={11} /><YAxis stroke="rgba(255,255,255,0.4)" fontSize={11} />
             <Tooltip contentStyle={{ background: "#1a1f2b", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12 }} />
-            <Line dataKey="manha" stroke="#5eead4" strokeWidth={2} /><Line dataKey="noite" stroke="#fbbf24" strokeWidth={2} />
+            <Line dataKey="presentes" stroke="#5eead4" strokeWidth={2} /><Line dataKey="visitantes" stroke="#fbbf24" strokeWidth={2} />
           </LineChart></ResponsiveContainer></div>
         </div>
         <div className="glass-panel rounded-2xl p-5">
