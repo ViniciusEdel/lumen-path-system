@@ -13,6 +13,7 @@ import { Route as SelectChurchRouteImport } from './routes/select-church'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminVisitorsRouteImport } from './routes/admin/visitors'
 import { Route as AdminPeopleRouteImport } from './routes/admin/people'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminPeopleIdRouteImport } from './routes/admin/people.$id'
@@ -35,6 +36,11 @@ const LoginRoute = LoginRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminVisitorsRoute = AdminVisitorsRouteImport.update({
+  id: '/admin/visitors',
+  path: '/admin/visitors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminPeopleRoute = AdminPeopleRouteImport.update({
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/visitors': typeof AdminVisitorsRoute
   '/admin/people/$id': typeof AdminPeopleIdRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/visitors': typeof AdminVisitorsRoute
   '/admin/people/$id': typeof AdminPeopleIdRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/visitors': typeof AdminVisitorsRoute
   '/admin/people/$id': typeof AdminPeopleIdRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/people'
+    | '/admin/visitors'
     | '/admin/people/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/people'
+    | '/admin/visitors'
     | '/admin/people/$id'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/people'
+    | '/admin/visitors'
     | '/admin/people/$id'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   SelectChurchRoute: typeof SelectChurchRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminPeopleRoute: typeof AdminPeopleRouteWithChildren
+  AdminVisitorsRoute: typeof AdminVisitorsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/visitors': {
+      id: '/admin/visitors'
+      path: '/admin/visitors'
+      fullPath: '/admin/visitors'
+      preLoaderRoute: typeof AdminVisitorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/people': {
@@ -193,6 +213,7 @@ const rootRouteChildren: RootRouteChildren = {
   SelectChurchRoute: SelectChurchRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminPeopleRoute: AdminPeopleRouteWithChildren,
+  AdminVisitorsRoute: AdminVisitorsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
