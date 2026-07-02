@@ -14,13 +14,18 @@ import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminVisitorsRouteImport } from './routes/admin/visitors'
+import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
+import { Route as AdminSchedulesRouteImport } from './routes/admin/schedules'
+import { Route as AdminReportsRouteImport } from './routes/admin/reports'
 import { Route as AdminPeopleRouteImport } from './routes/admin/people'
+import { Route as AdminPastoralCareRouteImport } from './routes/admin/pastoral-care'
 import { Route as AdminMinistriesRouteImport } from './routes/admin/ministries'
 import { Route as AdminGroupsRouteImport } from './routes/admin/groups'
 import { Route as AdminFinanceRouteImport } from './routes/admin/finance'
 import { Route as AdminEventsRouteImport } from './routes/admin/events'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminCommunicationsRouteImport } from './routes/admin/communications'
+import { Route as AdminChildrenRouteImport } from './routes/admin/children'
 import { Route as AdminPeopleIdRouteImport } from './routes/admin/people.$id'
 
 const SelectChurchRoute = SelectChurchRouteImport.update({
@@ -48,9 +53,29 @@ const AdminVisitorsRoute = AdminVisitorsRouteImport.update({
   path: '/admin/visitors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/admin/settings',
+  path: '/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSchedulesRoute = AdminSchedulesRouteImport.update({
+  id: '/admin/schedules',
+  path: '/admin/schedules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/admin/reports',
+  path: '/admin/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminPeopleRoute = AdminPeopleRouteImport.update({
   id: '/admin/people',
   path: '/admin/people',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPastoralCareRoute = AdminPastoralCareRouteImport.update({
+  id: '/admin/pastoral-care',
+  path: '/admin/pastoral-care',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminMinistriesRoute = AdminMinistriesRouteImport.update({
@@ -83,6 +108,11 @@ const AdminCommunicationsRoute = AdminCommunicationsRouteImport.update({
   path: '/admin/communications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminChildrenRoute = AdminChildrenRouteImport.update({
+  id: '/admin/children',
+  path: '/admin/children',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminPeopleIdRoute = AdminPeopleIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -94,13 +124,18 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/select-church': typeof SelectChurchRoute
+  '/admin/children': typeof AdminChildrenRoute
   '/admin/communications': typeof AdminCommunicationsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/finance': typeof AdminFinanceRoute
   '/admin/groups': typeof AdminGroupsRoute
   '/admin/ministries': typeof AdminMinistriesRoute
+  '/admin/pastoral-care': typeof AdminPastoralCareRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/schedules': typeof AdminSchedulesRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/visitors': typeof AdminVisitorsRoute
   '/admin/people/$id': typeof AdminPeopleIdRoute
 }
@@ -109,13 +144,18 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/select-church': typeof SelectChurchRoute
+  '/admin/children': typeof AdminChildrenRoute
   '/admin/communications': typeof AdminCommunicationsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/finance': typeof AdminFinanceRoute
   '/admin/groups': typeof AdminGroupsRoute
   '/admin/ministries': typeof AdminMinistriesRoute
+  '/admin/pastoral-care': typeof AdminPastoralCareRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/schedules': typeof AdminSchedulesRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/visitors': typeof AdminVisitorsRoute
   '/admin/people/$id': typeof AdminPeopleIdRoute
 }
@@ -125,13 +165,18 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/select-church': typeof SelectChurchRoute
+  '/admin/children': typeof AdminChildrenRoute
   '/admin/communications': typeof AdminCommunicationsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/finance': typeof AdminFinanceRoute
   '/admin/groups': typeof AdminGroupsRoute
   '/admin/ministries': typeof AdminMinistriesRoute
+  '/admin/pastoral-care': typeof AdminPastoralCareRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/schedules': typeof AdminSchedulesRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/visitors': typeof AdminVisitorsRoute
   '/admin/people/$id': typeof AdminPeopleIdRoute
 }
@@ -142,13 +187,18 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/select-church'
+    | '/admin/children'
     | '/admin/communications'
     | '/admin/dashboard'
     | '/admin/events'
     | '/admin/finance'
     | '/admin/groups'
     | '/admin/ministries'
+    | '/admin/pastoral-care'
     | '/admin/people'
+    | '/admin/reports'
+    | '/admin/schedules'
+    | '/admin/settings'
     | '/admin/visitors'
     | '/admin/people/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -157,13 +207,18 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/select-church'
+    | '/admin/children'
     | '/admin/communications'
     | '/admin/dashboard'
     | '/admin/events'
     | '/admin/finance'
     | '/admin/groups'
     | '/admin/ministries'
+    | '/admin/pastoral-care'
     | '/admin/people'
+    | '/admin/reports'
+    | '/admin/schedules'
+    | '/admin/settings'
     | '/admin/visitors'
     | '/admin/people/$id'
   id:
@@ -172,13 +227,18 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/select-church'
+    | '/admin/children'
     | '/admin/communications'
     | '/admin/dashboard'
     | '/admin/events'
     | '/admin/finance'
     | '/admin/groups'
     | '/admin/ministries'
+    | '/admin/pastoral-care'
     | '/admin/people'
+    | '/admin/reports'
+    | '/admin/schedules'
+    | '/admin/settings'
     | '/admin/visitors'
     | '/admin/people/$id'
   fileRoutesById: FileRoutesById
@@ -188,13 +248,18 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
   SelectChurchRoute: typeof SelectChurchRoute
+  AdminChildrenRoute: typeof AdminChildrenRoute
   AdminCommunicationsRoute: typeof AdminCommunicationsRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminEventsRoute: typeof AdminEventsRoute
   AdminFinanceRoute: typeof AdminFinanceRoute
   AdminGroupsRoute: typeof AdminGroupsRoute
   AdminMinistriesRoute: typeof AdminMinistriesRoute
+  AdminPastoralCareRoute: typeof AdminPastoralCareRoute
   AdminPeopleRoute: typeof AdminPeopleRouteWithChildren
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminSchedulesRoute: typeof AdminSchedulesRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
   AdminVisitorsRoute: typeof AdminVisitorsRoute
 }
 
@@ -235,11 +300,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminVisitorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/admin/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/schedules': {
+      id: '/admin/schedules'
+      path: '/admin/schedules'
+      fullPath: '/admin/schedules'
+      preLoaderRoute: typeof AdminSchedulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/admin/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/people': {
       id: '/admin/people'
       path: '/admin/people'
       fullPath: '/admin/people'
       preLoaderRoute: typeof AdminPeopleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/pastoral-care': {
+      id: '/admin/pastoral-care'
+      path: '/admin/pastoral-care'
+      fullPath: '/admin/pastoral-care'
+      preLoaderRoute: typeof AdminPastoralCareRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/ministries': {
@@ -284,6 +377,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminCommunicationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/children': {
+      id: '/admin/children'
+      path: '/admin/children'
+      fullPath: '/admin/children'
+      preLoaderRoute: typeof AdminChildrenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/people/$id': {
       id: '/admin/people/$id'
       path: '/$id'
@@ -311,13 +411,18 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,
   SelectChurchRoute: SelectChurchRoute,
+  AdminChildrenRoute: AdminChildrenRoute,
   AdminCommunicationsRoute: AdminCommunicationsRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminEventsRoute: AdminEventsRoute,
   AdminFinanceRoute: AdminFinanceRoute,
   AdminGroupsRoute: AdminGroupsRoute,
   AdminMinistriesRoute: AdminMinistriesRoute,
+  AdminPastoralCareRoute: AdminPastoralCareRoute,
   AdminPeopleRoute: AdminPeopleRouteWithChildren,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminSchedulesRoute: AdminSchedulesRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
   AdminVisitorsRoute: AdminVisitorsRoute,
 }
 export const routeTree = rootRouteImport
