@@ -17,6 +17,7 @@ import { Route as AdminVisitorsRouteImport } from './routes/admin/visitors'
 import { Route as AdminPeopleRouteImport } from './routes/admin/people'
 import { Route as AdminMinistriesRouteImport } from './routes/admin/ministries'
 import { Route as AdminGroupsRouteImport } from './routes/admin/groups'
+import { Route as AdminFinanceRouteImport } from './routes/admin/finance'
 import { Route as AdminEventsRouteImport } from './routes/admin/events'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminPeopleIdRouteImport } from './routes/admin/people.$id'
@@ -61,6 +62,11 @@ const AdminGroupsRoute = AdminGroupsRouteImport.update({
   path: '/admin/groups',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminFinanceRoute = AdminFinanceRouteImport.update({
+  id: '/admin/finance',
+  path: '/admin/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminEventsRoute = AdminEventsRouteImport.update({
   id: '/admin/events',
   path: '/admin/events',
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/events': typeof AdminEventsRoute
+  '/admin/finance': typeof AdminFinanceRoute
   '/admin/groups': typeof AdminGroupsRoute
   '/admin/ministries': typeof AdminMinistriesRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
@@ -97,6 +104,7 @@ export interface FileRoutesByTo {
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/events': typeof AdminEventsRoute
+  '/admin/finance': typeof AdminFinanceRoute
   '/admin/groups': typeof AdminGroupsRoute
   '/admin/ministries': typeof AdminMinistriesRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
@@ -111,6 +119,7 @@ export interface FileRoutesById {
   '/select-church': typeof SelectChurchRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/events': typeof AdminEventsRoute
+  '/admin/finance': typeof AdminFinanceRoute
   '/admin/groups': typeof AdminGroupsRoute
   '/admin/ministries': typeof AdminMinistriesRoute
   '/admin/people': typeof AdminPeopleRouteWithChildren
@@ -126,6 +135,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/events'
+    | '/admin/finance'
     | '/admin/groups'
     | '/admin/ministries'
     | '/admin/people'
@@ -139,6 +149,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/events'
+    | '/admin/finance'
     | '/admin/groups'
     | '/admin/ministries'
     | '/admin/people'
@@ -152,6 +163,7 @@ export interface FileRouteTypes {
     | '/select-church'
     | '/admin/dashboard'
     | '/admin/events'
+    | '/admin/finance'
     | '/admin/groups'
     | '/admin/ministries'
     | '/admin/people'
@@ -166,6 +178,7 @@ export interface RootRouteChildren {
   SelectChurchRoute: typeof SelectChurchRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminEventsRoute: typeof AdminEventsRoute
+  AdminFinanceRoute: typeof AdminFinanceRoute
   AdminGroupsRoute: typeof AdminGroupsRoute
   AdminMinistriesRoute: typeof AdminMinistriesRoute
   AdminPeopleRoute: typeof AdminPeopleRouteWithChildren
@@ -230,6 +243,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminGroupsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/finance': {
+      id: '/admin/finance'
+      path: '/admin/finance'
+      fullPath: '/admin/finance'
+      preLoaderRoute: typeof AdminFinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/events': {
       id: '/admin/events'
       path: '/admin/events'
@@ -273,6 +293,7 @@ const rootRouteChildren: RootRouteChildren = {
   SelectChurchRoute: SelectChurchRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminEventsRoute: AdminEventsRoute,
+  AdminFinanceRoute: AdminFinanceRoute,
   AdminGroupsRoute: AdminGroupsRoute,
   AdminMinistriesRoute: AdminMinistriesRoute,
   AdminPeopleRoute: AdminPeopleRouteWithChildren,
